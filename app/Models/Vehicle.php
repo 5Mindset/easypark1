@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +18,7 @@ class Vehicle extends Model
         'type_id',
         'color_id',
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -44,5 +42,10 @@ class Vehicle extends Model
     public function color()
     {
         return $this->belongsTo(VehicleColor::class);
+    }
+
+    public function qrCode()
+    {
+        return $this->hasOne(QrCode::class);
     }
 }
