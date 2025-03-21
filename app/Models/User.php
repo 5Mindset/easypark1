@@ -20,13 +20,13 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name', 
-        'nim_nidn', 
-        'role_id', 
-        'status', 
-        'email', 
-        'phone', 
-        'photo', 
+        'name',
+        'nim_nidn',
+        'role_id',
+        'status',
+        'email',
+        'phone',
+        'photo',
         'password'
     ];
 
@@ -56,5 +56,15 @@ class User extends Authenticatable
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
+
+    public function guestVehicles()
+    {
+        return $this->hasMany(GuestVehicle::class, 'staff_id');
     }
 }
